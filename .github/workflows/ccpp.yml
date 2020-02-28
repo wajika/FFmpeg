@@ -21,8 +21,9 @@ jobs:
       run: sudo make install
     - uses: denverdino/acr-login@v1
       with:
+        login-server: '<login server>'
         region-id: 'cn-hangzhou'
         access-key-id: 'LTAI4FcbNPgxVeSBoYzRFMRy'
         access-key-secret: 'dB9FmyEHbio7Q6k8wYI8oqXhs3m2PC'
     - name: Build the Docker image
-      run: docker build . --file push_cloud --tag ffmpeg:$(date +%s)
+      run: docker build . -f push_cloud -t registry.cn-hangzhou.aliyuncs.com/denverdino/ffmpeg:$(date +%s)
