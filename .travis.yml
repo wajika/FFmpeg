@@ -10,5 +10,5 @@ before_install:
 script:
 - ./configure --enable-openssl --disable-x86asm
 - make -j32
-- sudo make install
+- make install
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$REGISTRY"
