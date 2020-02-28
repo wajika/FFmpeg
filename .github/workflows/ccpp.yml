@@ -19,3 +19,6 @@ jobs:
       run:  make -j32
     - name: make install
       run: sudo make install
+
+    - name: Build the Docker image
+      run: docker build . --file push_cloud --tag ffmpeg:$(date +%s)
