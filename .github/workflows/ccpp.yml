@@ -19,7 +19,7 @@ jobs:
     - name: make install
       run: sudo make install
     - name: login docker
-	run: 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+      run: 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
     - name: Build the Docker image
       run: docker build -f ./push_cloud -t wajika/ffmpeg:latest .
 
