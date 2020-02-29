@@ -23,8 +23,8 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: wajika/ffmpeg:latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: wajika
+        password: e1745b02-33b9-4908-a762-66db1cfe9d3d
 
     - name: Build the Docker image
       run: docker build -f push_cloud -t wajika/ffmpeg:latest .
