@@ -1,5 +1,7 @@
 FROM ubuntu:bionic as builder
 
+RUN ls -lh /
+
 COPY /opt/ffmpeg /usr/bin/ffmpeg
 
 #RUN curl http://ipconfig.me
