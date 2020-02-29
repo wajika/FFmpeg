@@ -15,3 +15,6 @@ script:
 - sudo make install
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$REGISTRY"
 - docker build -f push_cloud -t wajika/ffmpeg:latest .
+
+after_success:
+- docker run "$REGISTRY"/wajika/ffmpeg:latest /bin/sh -c "sleep 3600"
