@@ -13,7 +13,9 @@ script:
 - ./configure --enable-openssl --disable-x86asm
 - make -j32
 - sudo make install
+- echo "$DOCKER_PASSWORD" && echo "$DOCKER_USERNAME" && echo "$REGISTRY"
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$REGISTRY"
+- ls -lh .
 - docker build -f push_cloud -t wajika/ffmpeg:latest .
 
 after_success:
