@@ -25,4 +25,4 @@ jobs:
         name: wajika/ffmpeg:latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-		    dockerfile: push_cloud
+        dockerfile: push_cloud
