@@ -13,16 +13,13 @@ jobs:
     - name: install libssl-dev
       run: sudo apt-get install libssl-dev
     - name: configure
-      run: ./configure --enable-openssl --disable-x86asm --prefix=/opt/
+      run: ./configure --enable-openssl --disable-x86asm
     - name: make
       run:  make -j32
     - name: make install
       run: sudo make install
-    - uses: actions/checkout@master
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: wajika/ffmpeg:latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: push_cloud
+    - name: login docker
+	run: 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+    - name: Build the Docker image
+      run: docker build -f ./push_cloud -t wajika/ffmpeg:latest .
+
