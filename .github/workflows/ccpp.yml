@@ -13,7 +13,7 @@ jobs:
     - name: install libssl-dev
       run: sudo apt-get install libssl-dev
     - name: configure
-      run: ./configure --enable-openssl --disable-x86asm
+      run: ./configure --enable-openssl --disable-x86asm --prefix=/opt/
     - name: make
       run:  make -j32
     - name: make install
