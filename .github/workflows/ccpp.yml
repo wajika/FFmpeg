@@ -23,5 +23,5 @@ jobs:
     - name: login docker
       run: 'echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
     - name: Build the Docker image
-      run: docker build -f ./push_cloud -t wajika/ffmpeg:latest .
+      run: docker build -t wajika/ffmpeg:latest .
 
