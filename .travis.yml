@@ -1,4 +1,6 @@
 os: linux
+dist: bionic
+
 services: docker
 compiler:
   - clang
@@ -10,5 +12,6 @@ before_install:
 script:
 - ./configure --enable-openssl --disable-x86asm
 - make -j32
-- make install
+- sudo make install
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$REGISTRY"
+- docker build -f push_cloud -t wajika/ffmpeg:latest .
