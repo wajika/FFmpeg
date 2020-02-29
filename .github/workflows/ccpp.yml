@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     
     steps:
@@ -19,12 +18,13 @@ jobs:
       run:  make -j32
     - name: make install
       run: sudo make install
-    - uses: denverdino/acr-login@v1
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        login-server: 'registry.cn-hangzhou.aliyuncs.com'
-        region-id: 'cn-hangzhou'
-        access-key-id: 'LTAI4FcbNPgxVeSBoYzRFMRy'
-        access-key-secret: 'dB9FmyEHbio7Q6k8wYI8oqXhs3m2PC'
+        name: wajika/ffmpeg:latest
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the Docker image
-      run: docker build -f push_cloud -t registry.cn-hangzhou.aliyuncs.com/wajika/ffmpeg:$(date +%s) .
+      run: docker build -f push_cloud -t wajika/ffmpeg:latest .
