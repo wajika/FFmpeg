@@ -18,10 +18,10 @@ jobs:
       run:  make -j32
     - name: make install
       run: sudo make install
-    - name: ls
-      run: ls -l .
     - name: login docker
       run: 'echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
+    - name: docker register
+      run: docker info
     - name: Build the Docker image
       run: docker build -t wajika/ffmpeg:latest .
 
