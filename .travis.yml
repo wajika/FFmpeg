@@ -14,5 +14,5 @@ script:
 - make -j32
 - sudo make install
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -f push_cloud -t wajika/ffmpeg:$(date +%Y.%m.%d) .
+- docker build -t wajika/ffmpeg:$(date +%Y.%m.%d) .
 - docker push wajika/ffmpeg:$(date +%Y.%m.%d)
