@@ -6,7 +6,6 @@ compiler:
   - clang
   - gcc
 
-
 before_install:
   - sudo apt-get install -y openssl libssl-dev
 script:
@@ -14,7 +13,5 @@ script:
 - make -j32
 - sudo make install
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -f push_cloud -t wajika/ffmpeg:latest .
-
-after_success:
-- docker run wajika/ffmpeg:latest /bin/sh -c "sleep 3600"
+- docker build -f push_cloud -t wajika/ffmpeg:$(date +%Y.%m.%d) .
+- docker push wajika/ffmpeg:$(date +%Y.%m.%d)
