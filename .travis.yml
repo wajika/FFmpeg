@@ -8,6 +8,7 @@ compiler:
 
 before_install:
   - sudo apt-get install -y openssl libssl-dev
+  
 script:
 - ./configure --enable-openssl --disable-x86asm
 - make -j32
