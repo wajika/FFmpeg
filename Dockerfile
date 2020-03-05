@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
-RUN sudo apt update
-RUN sudo apt install -y libxcb1-dev libxcb-shm0 libxcb-shm0-dev libk5crypto3 libkrb5-dev bzip2-devel
+RUN apt update
+RUN apt install -y libxcb1-dev libxcb-shm0 libxcb-shm0-dev libk5crypto3 libkrb5-dev bzip2-devel
 COPY libcrypto.so.1 /lib/x86_64-linux-gnu/
 COPY libxcb.so.1 /lib/x86_64-linux-gnu/
 COPY ffmpeg /usr/bin/ffmpeg
