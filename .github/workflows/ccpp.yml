@@ -28,5 +28,4 @@ jobs:
       run: docker info
     - name: Build the Docker image
       run: docker build -t wajika/ffmpeg:latest .
-    - name: push hub
-      run: docker run wajika/ffmpeg:latest -it ldd ffmpeg
+
