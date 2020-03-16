@@ -22,10 +22,17 @@ jobs:
       run: sudo make install
     - name: ldd
       run: ldd ffmpeg
-    - name: login docker
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-    - name: docker register
-      run: docker info
-    - name: Build the Docker image
-      run: docker build -t wajika/ffmpeg:latest .
-
+      
+    - uses: actions/checkout@master
+    - name: compile and release
+      uses: ngs/go-release.action@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOARCH: amd64
+        GOOS: linux
+#    - name: login docker
+#      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+#    - name: docker register
+#      run: docker info
+#    - name: Build the Docker image
+#      run: docker build -t wajika/ffmpeg:latest .
